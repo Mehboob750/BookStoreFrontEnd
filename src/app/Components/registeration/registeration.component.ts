@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { UserService } from 'src/app/Services/userService/user.service';
 
 @Component({
   selector: 'app-registeration',
@@ -8,7 +9,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class RegisterationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -93,8 +94,7 @@ export class RegisterationComponent implements OnInit {
 
   register() {
     if(this.firstName.valid&&this.lastName.valid && this.email.valid && this.city.valid && this.state.valid && this.pincode.valid && this.phone.valid &&this.password.valid && this.confirmPassword.valid){
-     // this.onRegister();
-     
+     this.onRegister();
     }
     else{
       this.firstName.markAsTouched();
@@ -113,13 +113,18 @@ onRegister(){
   let data={
     "firstName": this.firstName.value,
     "lastName": this.lastName.value, 
-    "phoneNumber": "",
-    "imageUrl": "",
-    "service": "Advance",
-    "email": this.email.value,
-    "cartId": "",
+    "gender":"Male",
+    "role":"User",
+    "emailId": this.email.value,
+    "city":this.city.value,
+    "state":this.state.value,
+    "pincode":this.pincode.value,
+    "phoneNumber":this.phone.value,
     "password":this.password.value
    }
+
+   this.userService.register(data).subscribe((data)=>{
+  });
   }
 
 }
