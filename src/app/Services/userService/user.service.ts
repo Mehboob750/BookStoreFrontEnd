@@ -11,4 +11,8 @@ export class UserService {
   register(data){
     return this.http.post(data,"/User/Registration")
    }
+
+   login(data){
+    return this.http.post(data,"/User/Login")
+   }
 }
