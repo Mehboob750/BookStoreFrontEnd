@@ -104,6 +104,7 @@ export class RegisterationComponent implements OnInit {
       this.state.markAsTouched();
       this.phone.markAsTouched();
       this.pincode.markAsTouched();
+      this.password.markAsTouched();
       this.confirmPassword.markAsTouched();
     }
   }
