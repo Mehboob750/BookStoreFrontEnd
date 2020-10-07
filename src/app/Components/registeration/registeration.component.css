@@ -1,5 +1,6 @@
 .example-card {
     width: 460px;
+    padding: 20px;
   }
 
   .card{
@@ -29,13 +30,13 @@
   margin-top: 15px;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-    color:  rgb(134, 39, 1)!important;
-  }
+.fname{ 
+    width: 225px;
+}
 
 .lname{
-  margin-left: 10px;
-  outline-color:  rgb(134, 39, 1);
+width: 225px;
+margin-left: 10px; 
 }
   .email-container .mat-form-field + .mat-form-field {
     margin-left: 8px;
@@ -43,32 +44,44 @@
   }
 .email{
   display: block;
-    width: 416px;
+    /* width: 416px; */
 }
-.state{
-    margin-left: 10px;
+.gender{
+    width: 225px;
 }
 .phone{
+    width: 225px;
     margin-left: 10px;
 }
-.cpassword{
-  margin-left: 10px;
+.city{
+    width: 225px;
 }
-  .button{
-   margin-left: 100px;
+.state{
+    width: 225px;
+    margin-left: 10px;
+}
+.pincode{
+    width: 225px;
+}
+.button{
+   margin-left: 250px;
    background-color: rgb(134, 39, 1);
    color: #ffff
-  }
-  img{
+}
+.password{
+    width: 225px;
+    margin-left: 10px;
+}
+img{
     width: 100px;
-  }
-  a{
+}
+a{
     display: block;
     position: relative;
     font-family: roboto;
     text-decoration: none;
 }
-  .line1{
+.line1{
     font-size: 12px;
     margin: 1px 0 1px 15px;
     width: 310px;

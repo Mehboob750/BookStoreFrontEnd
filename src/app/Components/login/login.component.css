@@ -64,7 +64,7 @@
 .password{
     display: block;
     width: 350px;
-    margin-left: 110px;
+    margin-left: 70px;
 }
 a{
     display: block;
@@ -83,7 +83,7 @@ a{
       margin-left: 40px;
   }
   .button{
-    margin-left: 100px;
+    margin-left: 155px;
     background-color: rgb(134, 39, 1);
     color: #ffff
    }

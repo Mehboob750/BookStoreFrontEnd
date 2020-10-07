@@ -17,12 +17,12 @@ export class RegisterationComponent implements OnInit {
   firstName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   lastName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   email = new FormControl('', [Validators.required, Validators.email]);
+  gender = new FormControl('', [Validators.required, Validators.minLength(3)]);
   city = new FormControl('', [Validators.required, Validators.minLength(3)]);
   state = new FormControl('', [Validators.required, Validators.minLength(3)]);
   pincode = new FormControl('', [Validators.required, Validators.minLength(6)]);
   phone = new FormControl('', [Validators.required, Validators.minLength(10)]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  confirmPassword = new FormControl('',[Validators.required, Validators.minLength(6)])
 
   getFirstNameErrorMessage(){
     console.log("Hello");
@@ -47,7 +47,12 @@ export class RegisterationComponent implements OnInit {
     return 'Invalid email';
     }
   }
-
+  getGenderErrorMessage(){
+    if (this.gender.hasError('required')) {
+      return 'Please enter gender';
+    }
+   return this.gender.invalid ? 'Invalid gender' : '';
+  }
   getCityErrorMessage(){
     if (this.city.hasError('required')) {
       return 'Please enter city';
@@ -84,28 +89,20 @@ export class RegisterationComponent implements OnInit {
    return this.password.invalid ? 'Invalid password' : '';
   }
 
-  getConfirmPasswordErrorMessage(){
-
-    if (this.confirmPassword.hasError('required')) {
-      return 'Please enter a password';
-    }
-   return this.confirmPassword.invalid ? 'Invalid password' : '';
-  }
-
   register() {
-    if(this.firstName.valid&&this.lastName.valid && this.email.valid && this.city.valid && this.state.valid && this.pincode.valid && this.phone.valid &&this.password.valid && this.confirmPassword.valid){
+    if(this.firstName.valid&&this.lastName.valid && this.email.valid && this.city.valid && this.gender.valid && this.state.valid && this.pincode.valid && this.phone.valid &&this.password.valid){
      this.onRegister();
     }
     else{
       this.firstName.markAsTouched();
       this.lastName.markAsTouched();
       this.email.markAsTouched();
+      this.gender.markAsTouched();
       this.city.markAsTouched();
       this.state.markAsTouched();
       this.phone.markAsTouched();
       this.pincode.markAsTouched();
       this.password.markAsTouched();
-      this.confirmPassword.markAsTouched();
     }
   }
 
@@ -113,7 +110,7 @@ onRegister(){
   let data={
     "firstName": this.firstName.value,
     "lastName": this.lastName.value, 
-    "gender":"Male",
+    "gender": this.gender.value,
     "role":"User",
     "emailId": this.email.value,
     "city":this.city.value,
