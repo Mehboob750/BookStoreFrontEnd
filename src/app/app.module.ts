@@ -15,12 +15,19 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './Components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToolbarComponent } from './Components/toolbar/toolbar.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterationComponent,
-    LoginComponent
+    LoginComponent,
+    AdminDashboardComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
