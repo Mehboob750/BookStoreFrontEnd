@@ -1,0 +1,16 @@
+.title{
+    background: #A03037;
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    align-items: center;
+}
+.button{
+    background: #A03037;
+    color: #ffff;
+    margin-left: 43%;
+   
+}
+.text{
+    color: #ffff;
+}

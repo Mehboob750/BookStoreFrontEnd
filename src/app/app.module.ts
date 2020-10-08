@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import { AddBookComponent } from './Components/add-book/add-book.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BookContentsComponent } from './Components/book-contents/book-contents.component';
+import { UpdateBookComponent } from './Components/update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BookContentsComponent } from './Components/book-contents/book-contents.
     AdminDashboardComponent,
     ToolbarComponent,
     AddBookComponent,
-    BookContentsComponent
+    BookContentsComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/Services/adminService/admin.service';
 import { AddBookComponent } from '../add-book/add-book.component';
+import { UpdateBookComponent } from '../update-book/update-book.component';
 
 export interface PeriodicElement {
   bookName: string;
@@ -38,8 +39,11 @@ export class AdminDashboardComponent implements OnInit {
   }
   dataSource = this.values;
 
-  openDialog(value){
+  openAddDialog(){
     console.log("Hello")
-    let dialogRef = this.dialog.open(AddBookComponent,{data:value});
+    let dialogRef = this.dialog.open(AddBookComponent,{});
+  }
+  openUpdateDialog(value){
+    let dialogRef = this.dialog.open(UpdateBookComponent,{data:value});
   }
 }
