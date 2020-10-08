@@ -19,7 +19,9 @@ import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dash
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToolbarComponent } from './Components/toolbar/toolbar.component';
 import {MatTableModule} from '@angular/material/table';
-
+import { AddBookComponent } from './Components/add-book/add-book.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BookContentsComponent } from './Components/book-contents/book-contents.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {MatTableModule} from '@angular/material/table';
     RegisterationComponent,
     LoginComponent,
     AdminDashboardComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AddBookComponent,
+    BookContentsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

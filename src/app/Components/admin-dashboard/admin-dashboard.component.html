@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 <div class="add" fxLayout="row">
-  <button mat-raised-button color="primary">Add Book</button>
+  <button mat-raised-button color="primary" (click)="openDialog()">Add Book</button>
 </div>
     <div class="table-structure">
      <table mat-table [dataSource]="values" class="table-card">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/Services/adminService/admin.service';
+import { AddBookComponent } from '../add-book/add-book.component';
 
 export interface PeriodicElement {
   bookName: string;
@@ -18,7 +20,7 @@ export interface PeriodicElement {
 export class AdminDashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['image', 'bookName', 'authorName', 'description','price','quantity','update','delete'];
-    constructor(private adminService:AdminService) { }
+    constructor(private adminService:AdminService, public dialog:MatDialog) { }
   values=[];
   ngOnInit() {
     console.log("Hii");
@@ -35,4 +37,9 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
   dataSource = this.values;
+
+  openDialog(value){
+    console.log("Hello")
+    let dialogRef = this.dialog.open(AddBookComponent,{data:value});
+  }
 }
