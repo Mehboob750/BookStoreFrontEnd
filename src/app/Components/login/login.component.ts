@@ -53,11 +53,12 @@ export class LoginComponent implements OnInit {
      } 
      this.userService.login(data).subscribe((data)=>{
       console.log(data);
-     // localStorage.setItem('firstName',data['firstName']);
-      //localStorage.setItem('lastName',data['lastName']);
-      //localStorage.setItem('token',data['id']);
-      //localStorage.setItem('userId',data['userId']);
-      //localStorage.setItem('email',data['email']);
+     localStorage.setItem('firstName',data['data']['firstName']);
+     localStorage.setItem('lastName',data['data']['lastName']);
+     localStorage.setItem('token',data['data']['token']);
+     localStorage.setItem('id',data['data']['id']);
+     localStorage.setItem('role',data['data']['role']);
+     localStorage.setItem('email',data['data']['emailId']);
     });
   }
 }

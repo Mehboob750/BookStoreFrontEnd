@@ -11,4 +11,8 @@ export class AdminService {
   getAllBooks(){
     return this.http.get("/Book")
   }
+
+  addBook(data){
+    return this.http.postAutharize(data,"/Book")
+   }
 }

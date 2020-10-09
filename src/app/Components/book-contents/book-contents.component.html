@@ -1,7 +1,9 @@
 <div>
     <div class="image">
-        <img class="book-image" src="../../../assets/Images/book.jpg">
+        <!-- <img class="book-image" src="../../../assets/Images/book.jpg"> -->
+        <img class="book-image" [src]="url" alt="">
     </div>
+    <div class= "file"> <input type="file" class="input-file" (change)="selectFile($event)"></div>
     <div class="text">
         <span>Add Image</span>
     </div>
@@ -32,7 +34,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline" class="quantity1">
             <mat-label>Quantity</mat-label>
-            <input matInput [formControl]="quantity">
+            <input matInput [formControl]="quantity" (click)="sendData()">
             <mat-error *ngIf="quantity.invalid">{{getQuantityErrorMessage()}}</mat-error>
           </mat-form-field>
     </div>

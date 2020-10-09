@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HttpService {
   baseUrl=environment.baseUrl
-  // private options = { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) };
+  private options = { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) };
   constructor(private httpClient: HttpClient) { }
 
   post(data,url){
@@ -16,5 +16,8 @@ export class HttpService {
 
   get(url){
     return this.httpClient.get(this.baseUrl+url)
+  }
+  postAutharize(data,url){
+    return this.httpClient.post(this.baseUrl+url,data,this.options)
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -10,13 +10,28 @@ export class BookContentsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  @Output() messageEvent = new EventEmitter<any>();
+
+  ngOnInit():void {
   }
   bookName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   authorName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   description = new FormControl('', [Validators.required, Validators.minLength(3)]);
   price = new FormControl('',[]);
   quantity = new FormControl('',[]);
+
+  url = "../../../assets/Images/book.jpg";
+
+  selectFile(event){
+    if (event.target.files) {
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event:any) => {
+      this.url = event.target.result;
+      console.log(this.url);
+      }
+    }
+  }
 
   getBookNameErrorMessage(){
     if (this.bookName.hasError('required')) {
@@ -43,24 +58,25 @@ export class BookContentsComponent implements OnInit {
     if (this.price.hasError('required')) {
       return 'Please enter a price';
     }
+    return this.price.invalid ? 'Invalid price' : '';
   }
 
   getQuantityErrorMessage(){
     if (this.quantity.hasError('required')) {
       return 'Please enter a quantity';
     }
+    return this.quantity.invalid ? 'Invalid quantity' : '';
   }
 
-  addBook() {
-    if(this.bookName.valid&&this.authorName.valid && this.description.valid && this.price.valid && this.quantity.valid){
-    // this.onRegister();
+  sendData(){
+    let data = {
+      "bookName" : this.bookName.value,
+      "authorName" : this.authorName.value,
+      "description" : this.description.value,
+      "price" : this.price.value,
+      "quantity" : this.quantity.value,
+      "image" : this.url
     }
-    else{
-      this.bookName.markAsTouched();
-      this.authorName.markAsTouched();
-      this.description.markAsTouched();
-      this.price.markAsTouched();
-      this.quantity.markAsTouched();
-    }
+    this.messageEvent.emit(data)
   }
 }

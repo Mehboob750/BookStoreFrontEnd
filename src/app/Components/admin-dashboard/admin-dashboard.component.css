@@ -1,8 +1,8 @@
 .table-card {
     width: 90%;
-    border: 1px solid;
-    box-shadow: 0 1px 1px 0;
     /* margin-top: 10%; */
+    box-shadow: 1px 1px 6px 1px lightgrey;
+    border-radius: 10px;
 }
 .heading{
     font-size: xxx-large;
@@ -31,4 +31,10 @@
     margin-left: 88%;
     margin-top: 2%;
     margin-bottom: 2%;
+}
+.table-head{
+    font-size: 18px;
+}
+.column-data{
+    text-align: center;
 }

@@ -23,3 +23,10 @@
     justify-content: center;
     font-size: larger;
 }
+.file{
+    margin-left: 123px;
+    margin-top: 5px;
+}
+.input-file{
+    outline: none;
+}
