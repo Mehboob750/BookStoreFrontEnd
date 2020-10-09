@@ -20,4 +20,7 @@ export class HttpService {
   postAutharize(data,url){
     return this.httpClient.post(this.baseUrl+url,data,this.options)
   }
+  delete(url){
+    return this.httpClient.delete(this.baseUrl+url)
+  }
 }

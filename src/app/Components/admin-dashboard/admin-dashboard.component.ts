@@ -46,4 +46,9 @@ export class AdminDashboardComponent implements OnInit {
   openUpdateDialog(element){
     let dialogRef = this.dialog.open(UpdateBookComponent,{data:element});
   }
+
+  deleteBook(element){
+    this.adminService.deleteBook(element.bookId).subscribe((data)=>{
+    });
+  }
 }

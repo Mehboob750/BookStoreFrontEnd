@@ -19,4 +19,8 @@ export class AdminService {
    updateBook(data,id){
     return this.http.postAutharize(data,"/Book/"+id)
    }
+
+   deleteBook(id){
+    return this.http.delete("/Book/"+id)
+  }
 }
