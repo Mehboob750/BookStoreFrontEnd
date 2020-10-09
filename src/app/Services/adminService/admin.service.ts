@@ -15,4 +15,8 @@ export class AdminService {
   addBook(data){
     return this.http.postAutharize(data,"/Book")
    }
+
+   updateBook(data,id){
+    return this.http.postAutharize(data,"/Book/"+id)
+   }
 }

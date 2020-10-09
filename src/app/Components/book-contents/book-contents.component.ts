@@ -1,5 +1,8 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AdminService } from 'src/app/Services/adminService/admin.service';
+import { UpdateBookComponent } from '../update-book/update-book.component';
 
 @Component({
   selector: 'app-book-contents',
@@ -8,27 +11,32 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class BookContentsComponent implements OnInit {
 
-  constructor() { }
+  @Input() childMessage: string;
+  @Input() id: any;
+  constructor(private adminService:AdminService,public dialogRef: MatDialogRef<UpdateBookComponent>) { console.log(this.id) }
 
-  @Output() messageEvent = new EventEmitter<any>();
-
-  ngOnInit():void {
+  ngOnInit(): void {
   }
+
+  data1 = [];
+
   bookName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   authorName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   description = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  price = new FormControl('',[]);
-  quantity = new FormControl('',[]);
+  price = new FormControl('',[Validators.required]);
+  quantity = new FormControl('',[Validators.required]);
+  
+  url = "../../../assets/Images/add_image.png";
 
-  url = "../../../assets/Images/book.jpg";
-
+  bookImage=null;
   selectFile(event){
     if (event.target.files) {
+      this.bookImage=event.target.files[0]
+      console.log(this.bookImage)
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (event:any) => {
       this.url = event.target.result;
-      console.log(this.url);
       }
     }
   }
@@ -68,15 +76,47 @@ export class BookContentsComponent implements OnInit {
     return this.quantity.invalid ? 'Invalid quantity' : '';
   }
 
-  sendData(){
-    let data = {
-      "bookName" : this.bookName.value,
-      "authorName" : this.authorName.value,
-      "description" : this.description.value,
-      "price" : this.price.value,
-      "quantity" : this.quantity.value,
-      "image" : this.url
+  clickFunction(){
+      if(this.bookName.valid&&this.authorName.valid && this.description.valid && this.price.valid && this.quantity.valid){
+        if (this.childMessage == 'Add'){
+          this.addBook();
+        }
+        else{
+          this.updateBook();
+        }      
     }
-    this.messageEvent.emit(data)
+    else{
+      this.bookName.markAsTouched();
+      this.authorName.markAsTouched();
+      this.description.markAsTouched();
+      this.price.markAsTouched();
+      this.quantity.markAsTouched();
+    }
+  }
+  
+  addBook(){
+    var formData: any = new FormData();
+    formData.append("bookName", this.bookName.value);
+    formData.append("authorName", this.authorName.value);
+    formData.append("description", this.description.value);
+    formData.append("price", this.price.value);
+    formData.append("quantity", this.quantity.value);
+    formData.append("image", this.bookImage);
+    console.log(formData)
+    this.adminService.addBook(formData).subscribe((data)=>{
+    });
+  }
+
+  updateBook(){
+    var formData: any = new FormData();
+    formData.append("bookName", this.bookName.value);
+    formData.append("authorName", this.authorName.value);
+    formData.append("description", this.description.value);
+    formData.append("price", this.price.value);
+    formData.append("quantity", this.quantity.value);
+    formData.append("image", this.bookImage);
+ 
+    this.adminService.updateBook(formData,this.id).subscribe((data)=>{
+    });
   }
 }

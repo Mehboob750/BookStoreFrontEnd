@@ -1,9 +1,1 @@
-<div>
-    <div class="title">
-        <span class="text">Update Book</span>
-    </div>
-    <app-book-contents></app-book-contents>
-    <div>
-    <button mat-raised-button class="button" (click)="updateBook()">Update</button>
-    </div>
-</div>
+<app-book-contents [childMessage]="update" [id]="data.bookId"></app-book-contents>
