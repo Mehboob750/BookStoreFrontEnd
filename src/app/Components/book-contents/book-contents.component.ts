@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AdminService } from 'src/app/Services/adminService/admin.service';
+import { AddBookComponent } from '../add-book/add-book.component';
 import { UpdateBookComponent } from '../update-book/update-book.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class BookContentsComponent implements OnInit {
 
   @Input() childMessage: string;
   @Input() id: any;
-  constructor(private adminService:AdminService,public dialogRef: MatDialogRef<UpdateBookComponent>) { console.log(this.id) }
+  constructor(private adminService:AdminService,public dialogRef: MatDialogRef<UpdateBookComponent>,public dialogRef2: MatDialogRef<AddBookComponent>) { console.log(this.id) }
 
   ngOnInit(): void {
   }
@@ -105,6 +106,7 @@ export class BookContentsComponent implements OnInit {
     console.log(formData)
     this.adminService.addBook(formData).subscribe((data)=>{
     });
+    this.dialogRef2.close();
   }
 
   updateBook(){
@@ -118,5 +120,6 @@ export class BookContentsComponent implements OnInit {
  
     this.adminService.updateBook(formData,this.id).subscribe((data)=>{
     });
+    this.dialogRef.close();
   }
 }

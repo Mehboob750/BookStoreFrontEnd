@@ -23,6 +23,8 @@ import { AddBookComponent } from './Components/add-book/add-book.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BookContentsComponent } from './Components/book-contents/book-contents.component';
 import { UpdateBookComponent } from './Components/update-book/update-book.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UpdateBookComponent } from './Components/update-book/update-book.compon
     ToolbarComponent,
     AddBookComponent,
     BookContentsComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { UpdateBookComponent } from './Components/update-book/update-book.compon
     FlexLayoutModule,
     MatToolbarModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

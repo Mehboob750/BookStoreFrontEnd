@@ -28,13 +28,30 @@
     margin-left: 250px;
 }
 .add{
-    margin-left: 88%;
+    margin-left: 6%;
     margin-top: 2%;
-    margin-bottom: 2%;
 }
 .table-head{
     font-size: 18px;
+    text-align: center;
+
+}
+.column-quantity{
+    text-align: center;
+}
+.paginator{
+    margin-right: 35px;
 }
 .column-data{
-    /* text-align: center; */
+    text-align: center;
+}
+.search{
+    width: 85%;
+}
+.button{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+mat-mini-fab{
+    background-color: #A03037;
 }
