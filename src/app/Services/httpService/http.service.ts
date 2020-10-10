@@ -23,4 +23,7 @@ export class HttpService {
   delete(url){
     return this.httpClient.delete(this.baseUrl+url)
   }
+  put(data,url){
+    return this.httpClient.put(this.baseUrl+url,data,this.options)
+  }
 }
