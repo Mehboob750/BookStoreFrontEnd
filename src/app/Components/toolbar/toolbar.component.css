@@ -22,7 +22,25 @@
 }
 .cart{
     color: #ffff;
-    margin-left: 8%;
-    font-size: smaller;
-    font-weight: initial;
+    font-size: small;
+}
+.cart-logo{
+    margin-top: 10px;
+}
+.icon{
+    margin-left: 12px;
+    margin-top: 10px;
+    color: white;
+    background: #A03037;
+}
+.logo1{
+    margin-left: 12%;
+}
+.cart-div{
+    margin-left: 4%;
+}
+.name{
+    font-size: small;
+    color: white;
+    margin-left: 8px;
 }

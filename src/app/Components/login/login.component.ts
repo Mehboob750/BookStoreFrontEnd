@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/userService/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/Services/userService/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private router:Router,private userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -59,6 +60,13 @@ export class LoginComponent implements OnInit {
      localStorage.setItem('id',data['data']['id']);
      localStorage.setItem('role',data['data']['role']);
      localStorage.setItem('email',data['data']['emailId']);
+      if (localStorage.getItem('role') == "User"){
+        this.router.navigateByUrl('/userDashboard')
+      }
+      else{
+        this.router.navigateByUrl('/adminDashboard')
+      }
     });
+
   }
 }

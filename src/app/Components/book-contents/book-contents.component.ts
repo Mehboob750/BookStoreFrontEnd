@@ -14,9 +14,13 @@ export class BookContentsComponent implements OnInit {
 
   @Input() childMessage: string;
   @Input() id: any;
+  @Input() element: any;
   constructor(private adminService:AdminService,public dialogRef: MatDialogRef<UpdateBookComponent>,public dialogRef2: MatDialogRef<AddBookComponent>) { console.log(this.id) }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.childMessage == 'Add'){
+      this.element=[];
+    }
   }
 
   data1 = [];
@@ -94,7 +98,7 @@ export class BookContentsComponent implements OnInit {
       this.quantity.markAsTouched();
     }
   }
-  
+
   addBook(){
     var formData: any = new FormData();
     formData.append("bookName", this.bookName.value);

@@ -8,11 +8,19 @@ export class UserService {
 
   constructor(private http:HttpService) { }
 
-  register(data){
+   register(data){
     return this.http.post(data,"/User/Registration")
    }
 
    login(data){
     return this.http.post(data,"/User/Login")
    }
+
+   getAllBooks(){
+    return this.http.get("/Book")
+   }
+
+   getCartData(){
+    return this.http.get("/Cart")
+  }
 }

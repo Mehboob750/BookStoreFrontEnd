@@ -28,11 +28,10 @@ export class AdminDashboardComponent implements OnInit {
   pageSlice=[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
+  admin="Admin";
   ngOnInit() {
     console.log("Hii");
     this.getAllBooks();
-    // this.pageSlice = this.values.slice(0,5);
-   // console.log(this.pageSlice)
   }
 
   getAllBooks(){
@@ -45,9 +44,8 @@ export class AdminDashboardComponent implements OnInit {
       console.log(this.values);
     });
   }
-  // public pageSlice = this.values.slice(0,5);
-  dataSource = this.pageSlice;
-  //dataSource = new MatTableDataSource(this.pageSlice);
+ 
+  dataSource = new MatTableDataSource(this.pageSlice);
 
   openAddDialog(){
     console.log("Hello")
@@ -59,8 +57,8 @@ export class AdminDashboardComponent implements OnInit {
 
   deleteBook(element){
     this.adminService.deleteBook(element.bookId).subscribe((data)=>{
+      this.getAllBooks();
     });
-    this.values.splice(this.values.findIndex(item => item.item_id == element.bookId), 1);
   }
 
   OnPageChange(event: PageEvent) {
@@ -75,9 +73,14 @@ export class AdminDashboardComponent implements OnInit {
     console.log(this.pageSlice)
   }
  
-  // applyFilter(event: Event) {
-  //   console.log(event)
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  applyFilter(event: Event) {
+    console.log("filterData")
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(filterValue)
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+      console.log(this.dataSource)
+    }
+  }
 }

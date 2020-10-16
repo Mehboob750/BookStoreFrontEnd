@@ -25,6 +25,11 @@ import { BookContentsComponent } from './Components/book-contents/book-contents.
 import { UpdateBookComponent } from './Components/update-book/update-book.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FooterComponent } from './Components/footer/footer.component';
+import { UserDashboardComponent } from './Components/user-dashboard/user-dashboard.component';
+import { DisplayBooksComponent } from './Components/display-books/display-books.component';
+import { BooksComponent } from './Components/books/books.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CartComponent } from './Components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { FooterComponent } from './Components/footer/footer.component';
     AddBookComponent,
     BookContentsComponent,
     UpdateBookComponent,
-    FooterComponent
+    FooterComponent,
+    UserDashboardComponent,
+    DisplayBooksComponent,
+    BooksComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     MatToolbarModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
