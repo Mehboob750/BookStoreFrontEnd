@@ -30,6 +30,7 @@ import { DisplayBooksComponent } from './Components/display-books/display-books.
 import { BooksComponent } from './Components/books/books.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CartComponent } from './Components/cart/cart.component';
+import { AuthGuard } from './Services/Guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { CartComponent } from './Components/cart/cart.component';
     MatPaginatorModule,
     MatBadgeModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

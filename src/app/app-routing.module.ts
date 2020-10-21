@@ -5,6 +5,7 @@ import { CartComponent } from './Components/cart/cart.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
 import { UserDashboardComponent } from './Components/user-dashboard/user-dashboard.component';
+import { AuthGuard } from './Services/Guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,17 +23,19 @@ const routes: Routes = [
   },
   {
     path:'adminDashboard',
-    component:AdminDashboardComponent
+    component:AdminDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'userDashboard',
+    component:UserDashboardComponent,
+    canActivate: [AuthGuard]
   },
   // {
-  //   path:'userDashboard',
-  //   component:UserDashboardComponent
+  //   path: 'userDashboard', component: UserDashboardComponent, children: [
+  //     { path: 'cart', component: CartComponent }
+  //   ]
   // },
-  {
-    path: 'userDashboard', component: UserDashboardComponent, children: [
-      { path: 'cart', component: CartComponent }
-    ]
-  },
   {
     path:'cart',
     component:CartComponent

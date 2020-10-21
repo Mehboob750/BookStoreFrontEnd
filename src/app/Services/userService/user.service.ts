@@ -16,6 +16,10 @@ export class UserService {
     return this.http.post(data,"/User/Login")
    }
 
+   loggedIn() {
+     return !!localStorage.getItem('token')
+   }
+
    getAllBooks(){
     return this.http.get("/Book")
    }
